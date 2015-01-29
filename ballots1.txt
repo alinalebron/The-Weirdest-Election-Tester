@@ -1,0 +1,7 @@
+Moe  Larry  Curly  Shemp
+Moe  Curly  Shemp  Larry
+Moe  Shemp  Curly  Larry
+Curly  Larry  Shemp  Moe
+Curly  Shemp  Moe  Larry
+Shemp  Curly  Larry  Moe
+Larry  Shemp  Curly  Moe
