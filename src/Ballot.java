@@ -15,7 +15,7 @@ public class Ballot {
 
 
     /**
-     * The Ballot class constructor: initializes all of the variables of the ballot
+     * Constructs a voter ballot object with no information
      * @param voter         the voter number
      * @param ballot        a list of candidates the voter chose
      * @param firstChoice   the first choice the voter chose on the ballot
@@ -43,6 +43,14 @@ public class Ballot {
 
     public ArrayList<String> getBallot() {
         return ballot;
+    }
+
+    public void setBallot(ArrayList<String> ballot) {
+        this.ballot = ballot;
+    }
+
+    public void setVoter(int voter) {
+        this.voter = voter;
     }
 
     /**
