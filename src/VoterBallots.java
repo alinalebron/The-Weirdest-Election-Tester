@@ -5,8 +5,22 @@ public class VoterBallots {
 
     private ArrayList<Ballot> ballotList;  // each element is one voter's ballot
 
+    /**
+     * Constructs the VoterBallots object list with no ballots
+     * @param ballotList the set of voter ballots
+     */
+
     public VoterBallots(ArrayList<Ballot> ballotList) {
         this.ballotList = ballotList;
+    }
+
+    /**
+     * Gets the information from the ballotList
+     * @return ballotList the set of voter ballots
+     */
+
+    public ArrayList<Ballot> getBallotList() {
+        return ballotList;
     }
 
     public void addBallot(Ballot one) {
