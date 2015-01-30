@@ -34,9 +34,9 @@ public class ElectionTester {
 
         System.out.println(candidateList);
 
-        Ballot initialBallot = new Ballot();
-
-        VoterBallots voterBallot1 = new VoterBallots();
+//        Ballot initialBallot = new Ballot();
+//
+//        VoterBallots voterBallot1 = new VoterBallots();
 
 
 
