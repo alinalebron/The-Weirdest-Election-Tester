@@ -32,7 +32,14 @@ public class ElectionTester {
 
         }
 
-        System.out.println(candidateList);
+        for (int i = 0; i < candidateList.size(); i++) {
+
+            String candidate = candidateList.get(i);
+
+            System.out.println(candidate);
+        }
+
+//        System.out.println("The candidate list is:" + candidateList);
 
 //        Ballot initialBallot = new Ballot();
 //
