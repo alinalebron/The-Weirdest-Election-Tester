@@ -11,24 +11,21 @@ public class Ballot {
     // second name is the voter’s second choice,
     // etc
 
-    private String firstChoice; // the first candidate picked from the ballot
-
-
     /**
      * Constructs a voter ballot object with no information
-     * @param voter         the voter number
-     * @param ballot        a list of candidates the voter chose
-     * @param firstChoice   the first choice the voter chose on the ballot
+     *
+     * @param voter  the voter number
+     * @param ballot a list of candidates the voter chose
      */
 
-    public Ballot(int voter, ArrayList<String> ballot, String firstChoice) {
+    public Ballot(int voter, ArrayList<String> ballot) {
         this.voter = voter;
         this.ballot = ballot;
-        this.firstChoice = firstChoice;
     }
 
     /**
      * Gets the voter number from the ballot
+     *
      * @return the number of the voter
      */
 
@@ -38,6 +35,7 @@ public class Ballot {
 
     /**
      * Get the list of candidates on the ballot
+     *
      * @return the candidates on the ballot
      */
 
@@ -65,7 +63,17 @@ public class Ballot {
 
     public String firstChoiceFrom(ArrayList<String> candidateList) {
 
-        return candidateList.get(0);  // bogus return value so that class will compile
+        for (String candidate : this.ballot) {
+
+            if (candidateList.contains(candidate)) {
+                return candidate;
+            }
+
+        }
+
+        return "";
     }
-}  // end of Ballot class definition
+
+
+}
 
