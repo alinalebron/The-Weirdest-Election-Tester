@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -11,9 +12,25 @@ import java.util.Scanner;
  * and passes them to the ImmediateDecision constructor repeatedly until
  * only 1 winner remains. It will then display the winner.
  */
+
 public class ElectionTester {
 
     public static void main(String[] args) throws IOException {
+
+
+/**
+ *  TO DO:
+ *
+ *  1) Read from file
+ *  2) Create a VoterBallots object
+ *  3) For each line, split each name into an element in an array list
+ *  4) Create a new ballot
+ *  5) Store ballot in VoterBallots instance
+ */
+
+            ArrayList<String> ballot = new ArrayList<String>(Arrays.asList("Moes","Larry","Curly","Shemp"));
+
+            Ballot example = new Ballot(0, ballot);
 
         /*
          Constructs an arrayList that holds the candidates' names
@@ -32,12 +49,14 @@ public class ElectionTester {
 
         }
 
-        for (int i = 0; i < candidateList.size(); i++) {
-
-            String candidate = candidateList.get(i) + "  ";
-
-            System.out.print(candidate);
-        }
+        System.out.println(example.firstChoiceFrom(candidateList));
+//
+//        for (int i = 0; i < candidateList.size(); i++) {
+//
+//            String candidate = candidateList.get(i) + "  ";
+//
+//            System.out.print(candidate);
+//        }
 
 //        System.out.println("The candidate list is:" + candidateList);
 
