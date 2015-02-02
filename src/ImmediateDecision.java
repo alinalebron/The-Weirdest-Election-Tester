@@ -14,7 +14,15 @@ public class ImmediateDecision {
     private ArrayList<String> candidateList; // represents one candidate list
     private ArrayList<VoterBallots> election; // represents one set of voter ballots
 
+    public ImmediateDecision(ArrayList<String> candidateList, ArrayList<VoterBallots> election) {
+        this.candidateList = candidateList;
+        this.election = election;
+    }
+
+    public String runElection () {
 
 
 
+
+    }
 }
