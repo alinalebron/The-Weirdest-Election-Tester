@@ -24,7 +24,9 @@ public class Ballot {
      */
 
     public Ballot() {
+
         this.ballot = new ArrayList<String>();
+
     }
 
     /**
@@ -59,16 +61,22 @@ public class Ballot {
         getBallot().add(name);
     }
 
-    public int getBallotSize () {
+    public int getBallotSize() {
 
         return ballot.size();
     }
+
+    /**
+     * Gets a single element (a candidate a voter chose) from the ballot array list
+     *
+     * @return a candidate's name
+     */
 
     public String getBallotElement() {
 
         String singleElement = null;
 
-        for (int i = 0 ; i < getBallotSize(); i++) {
+        for (int i = 0; i < ballot.size(); i++) {
 
             singleElement = ballot.get(i);
         }
@@ -89,17 +97,15 @@ public class Ballot {
 
     public String firstChoiceFrom(ArrayList<String> candidateList) {
 
-        for (String candidate : getBallot()) { // looks through the candidate list
+//        for (String candidate : candidateList) { // looks through the candidate list
+            return candidateList.get(0);                    // return the first candidate
+//        }
 
-            if (candidateList.contains(candidate)) { // if candidate exists
-                return candidate;                    // return the first candidate
-            }
-
+//            return ""; // if the candidate is not on the list, return nothing
         }
 
-        return ""; // if the candidate is not on the list, return nothing
+
     }
 
 
-}
 

@@ -19,11 +19,37 @@ public class ImmediateDecision {
     /**
      * Constructs an Immediate Decision object
      */
+    public ImmediateDecision(ArrayList<String> candidateList, VoterBallots election) {
+        this.candidateList = candidateList;
+        this.election = election;
+    }
 
-    public ImmediateDecision() {
-        this.candidateList = new ArrayList<String>();
-        this.election = new VoterBallots();
+    /**
+     * A method that selects a winner or gets an indecisive result
+     * @return who has won the election
+     */
 
+    public String electWinner () {
+        ArrayList<String> winnerList = candidateList;
+
+        while (winnerList.size() > 1) {
+            if(election.candidatesWithFewest(winnerList).size() > 1) {
+                if(winnerList.size() == election.candidatesWithFewest(winnerList).size()) {
+                    break;
+                }
+            }
+            for(String s : election.candidatesWithFewest(winnerList)) {
+//                System.out.println(s + " was removed from the election!");
+                winnerList.remove(s);
+            }
+        }
+
+        if(winnerList.size() > 1) {
+            return "Election is not decisive!";
+        }
+
+        return winnerList.get(0) + " has won the election!";
     }
 }
+
 

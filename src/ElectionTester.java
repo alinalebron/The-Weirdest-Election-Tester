@@ -1,6 +1,3 @@
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
-
-import javax.xml.bind.SchemaOutputResolver;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +26,8 @@ public class ElectionTester {
         /*
         Reads input and adds each name to the candidateList array
          */
-        Scanner candidateFile = new Scanner(new File("/Users/alina/IdeaProjects/Assignments/ProgrammingII/Assignment1/candidates1.txt"));
+
+        Scanner candidateFile = new Scanner(new File("Assignment1/candidates2.txt"));
 
         while (candidateFile.hasNext()) { // until EOF
 
@@ -48,6 +46,7 @@ public class ElectionTester {
         }
 
         System.out.println(); // to separate lines
+        System.out.println();
 
         /*
          * Constructs an empty Voter Ballot object
@@ -58,7 +57,13 @@ public class ElectionTester {
          * Creates a scanner object that will scan the first ballots input file
          */
 
-        Scanner ballotFile = new Scanner(new File("/Users/alina/IdeaProjects/Assignments/ProgrammingII/Assignment1/ballots1.txt"));
+//        System.out.println("What is the name of the file with votes?");
+
+//        Scanner userInputTwo = new Scanner (System.in);
+//
+//        String votes = userInputTwo.next();
+
+        Scanner ballotFile = new Scanner(new File("Assignment1/ballots2.txt"));
 
 
         /*
@@ -77,7 +82,8 @@ public class ElectionTester {
                 eachVoter.addToBallot(singleVote); // add that singleVote to the empty ballot array list object
             }
 
-            System.out.println("This is a new ballot " + eachVoter.getBallot()); // output for debugging
+
+
 
             /*
              Adds each newly created ballot object to the voter ballot object (the set of ballot objects)
@@ -88,14 +94,8 @@ public class ElectionTester {
         }
 
 
-//        System.out.println(voterBallotOne.toString());
-
-//        for (int i = 0; i < voterBallotOne.size(); i++) {
-//
-//            String theBallot = voterBallotOne.readBallotList();
-//
-//            System.out.println(theBallot);
-//        }
+        ImmediateDecision vote = new ImmediateDecision(candidateList,voterBallotOne);
+        System.out.println(vote.electWinner());
 
 
     }

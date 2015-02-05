@@ -80,13 +80,16 @@ public class VoterBallots {
 
         int candidateCounter = 0; // initializes counter for candidates that were voted for first
 
-        if (candidateList.contains(candidate)) {
+        for (Ballot b : ballotList) {
 
-            candidateCounter++;
+            if (candidate.equals(b.firstChoiceFrom(candidateList))) {
+                candidateCounter++;
+            }
         }
-
+//        System.out.println(candidate + "'s votes: " + candidateCounter);
         return candidateCounter;
     }
+
 
     /**
      * Returns a list of one or more candidates tied with the fewest first
@@ -101,8 +104,21 @@ public class VoterBallots {
 
     public ArrayList<String> candidatesWithFewest(ArrayList<String> candidateList) {
 
+        ArrayList<String> fewest = new ArrayList<String>(); // declaring empty list
 
-        return null;   // bogus return value so that class will compile
+        int min = Integer.MAX_VALUE; // sets a number to the highest possible value
+
+        for (String s: candidateList) {
+            min = Math.min(min,numFirstVotes(s,candidateList)); // takes minimum of current & min of first candidates
+        }
+
+        for(String s: candidateList) {
+            if(min == numFirstVotes(s,candidateList)) { // compares lowest number of votes to current candidate
+                fewest.add(s); // add if candidate has lowest number of votes
+            }
+        }
+
+        return fewest;
     }
 
     public String toString() {
