@@ -18,31 +18,33 @@ public class ElectionTester {
     public static void main(String[] args) throws IOException {
 
         /*
-         Constructs an arrayList that holds the candidates' names
+         * Constructs an arrayList that holds the candidates' names for the first input file
          */
 
         ArrayList<String> candidateList = new ArrayList<String>();
 
         /*
-        Reads input and adds each name to the candidateList array
+         * Reads input and adds each name to the candidateList array
          */
 
-        Scanner candidateFile = new Scanner(new File("Assignment1/candidates2.txt"));
+        Scanner candidateFile = new Scanner(new File("Assignment1/candidates1.txt"));
 
-        while (candidateFile.hasNext()) { // until EOF
+        /* Scanner candidateFile = new Scanner(new File("Assignment1/candidates2.txt")); */ // for second run
 
+        while (candidateFile.hasNext()) // read until EOF
+        {
             candidateList.add(candidateFile.next()); // add each name to a candidate list
-
         }
 
         /*
-        * Prints out who's on the candidate list
+         * Prints out who's on the candidate list
          */
 
         System.out.print("The candidates are: ");
 
-        for (int i = 0; i < candidateList.size(); i++) {  // traverses the candidatelist
-            System.out.print(candidateList.get(i) + " ");
+        for (int i = 0; i < candidateList.size(); i++) // traverses the candidatelist
+        {
+            System.out.print(candidateList.get(i) + " "); // prints out who's on the list
         }
 
         System.out.println(); // to separate lines
@@ -51,19 +53,12 @@ public class ElectionTester {
         /*
          * Constructs an empty Voter Ballot object
          */
-        VoterBallots voterBallotOne = new VoterBallots();
 
-        /*
-         * Creates a scanner object that will scan the first ballots input file
-         */
+        VoterBallots voterBallot= new VoterBallots();
 
-//        System.out.println("What is the name of the file with votes?");
+        Scanner ballotFile = new Scanner(new File("Assignment1/ballots1.txt"));
 
-//        Scanner userInputTwo = new Scanner (System.in);
-//
-//        String votes = userInputTwo.next();
-
-        Scanner ballotFile = new Scanner(new File("Assignment1/ballots2.txt"));
+        /* Scanner ballotFile = new Scanner(new File("Assignment1/ballots2.txt")); */ // for second run
 
 
         /*
@@ -71,32 +66,32 @@ public class ElectionTester {
          * of voter ballots (the empty VoterBallots object)
          */
 
-        while (ballotFile.hasNext()) { // read until EOF
-
+        while (ballotFile.hasNext()) // read until EOF
+        {
             Ballot eachVoter = new Ballot(); // creates an empty ballot object
 
-            for (int i = 0; i < candidateList.size(); i++) { // traverse for as many candidates as there are left
-
+            for (int i = 0; i < candidateList.size(); i++) // traverse for as many candidates as there are left
+            {
                 String singleVote = ballotFile.next(); // store the next string into an object, singleVote
 
                 eachVoter.addToBallot(singleVote); // add that singleVote to the empty ballot array list object
             }
 
-
-
-
             /*
-             Adds each newly created ballot object to the voter ballot object (the set of ballot objects)
-              */
+             * Adds each newly created ballot object to the voter ballot object (the set of ballot objects)
+             */
 
-            voterBallotOne.addToBallotList(eachVoter);
-
+            voterBallot.addToBallotList(eachVoter);
         }
 
+        /*
+         * Creates a new Immediate Decision object to be able to run the election
+         * and outputs the winner to the console
+         */
 
-        ImmediateDecision vote = new ImmediateDecision(candidateList,voterBallotOne);
-        System.out.println(vote.electWinner());
+        ImmediateDecision vote = new ImmediateDecision(candidateList, voterBallot);
 
+        System.out.println(vote.electWinner()); // prints out the winner!
 
     }
 }

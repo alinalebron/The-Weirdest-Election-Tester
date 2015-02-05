@@ -17,7 +17,8 @@ public class VoterBallots {
      * Constructs the VoterBallots object list with no ballots
      */
 
-    public VoterBallots() {
+    public VoterBallots()
+    {
         ballotList = new ArrayList<Ballot>();
     }
 
@@ -28,7 +29,8 @@ public class VoterBallots {
      * @return ballotList - the set of voter ballots
      */
 
-    public ArrayList<Ballot> getBallotList() {
+    public ArrayList<Ballot> getBallotList()
+    {
         return ballotList;
     }
 
@@ -38,7 +40,8 @@ public class VoterBallots {
      * @param ballotList the set of voter ballots
      */
 
-    public void setBallotList(ArrayList<Ballot> ballotList) {
+    public void setBallotList(ArrayList<Ballot> ballotList)
+    {
         this.ballotList = ballotList;
     }
 
@@ -48,8 +51,8 @@ public class VoterBallots {
      * @param one a single ballot
      */
 
-    public void addToBallotList(Ballot one) {
-
+    public void addToBallotList(Ballot one)
+    {
         ballotList.add(one);
     }
 
@@ -59,8 +62,8 @@ public class VoterBallots {
      * @return the size of the VoterBallots array list object
      */
 
-    public int getBallotListSize() {
-
+    public int getBallotListSize()
+    {
         return ballotList.size();
     }
 
@@ -76,17 +79,21 @@ public class VoterBallots {
      * candidateList for all elements of ballotList
      */
 
-    private int numFirstVotes(String candidate, ArrayList<String> candidateList) {
-
+    private int numFirstVotes(String candidate, ArrayList<String> candidateList)
+    {
         int candidateCounter = 0; // initializes counter for candidates that were voted for first
 
-        for (Ballot b : ballotList) {
+        for (Ballot b : ballotList)
+        {
 
-            if (candidate.equals(b.firstChoiceFrom(candidateList))) {
+            if (candidate.equals(b.firstChoiceFrom(candidateList)))
+            {
                 candidateCounter++;
             }
         }
-//        System.out.println(candidate + "'s votes: " + candidateCounter);
+
+//        System.out.println(candidate + "'s votes: " + candidateCounter); // output for debugging
+
         return candidateCounter;
     }
 
@@ -102,33 +109,37 @@ public class VoterBallots {
      * @return a list of those candidates tied with the fewest first choice votes
      */
 
-    public ArrayList<String> candidatesWithFewest(ArrayList<String> candidateList) {
+    public ArrayList<String> candidatesWithFewest(ArrayList<String> candidateList)
+    {
 
         ArrayList<String> fewest = new ArrayList<String>(); // declaring empty list
 
         int min = Integer.MAX_VALUE; // sets a number to the highest possible value
 
-        for (String s: candidateList) {
-            min = Math.min(min,numFirstVotes(s,candidateList)); // takes minimum of current & min of first candidates
+        for (String s : candidateList)
+        {
+            min = Math.min(min, numFirstVotes(s, candidateList)); // takes minimum of current & min of first candidates
         }
 
-        for(String s: candidateList) {
-            if(min == numFirstVotes(s,candidateList)) { // compares lowest number of votes to current candidate
-                fewest.add(s); // add if candidate has lowest number of votes
+        for (String s : candidateList)
+        {
+            if (min == numFirstVotes(s, candidateList)) // compares lowest number of votes to current candidate
+            {
+                fewest.add(s); // add to the list if candidate has lowest number of votes
             }
         }
-
         return fewest;
     }
 
-    public String toString() {
+    public String toString()
+    {
 
         String theVoterBallot = "";
 
         Ballot oneBallot;
 
-        for (int i = 0; i < ballotList.size(); i++) {
-
+        for (int i = 0; i < ballotList.size(); i++)
+        {
             oneBallot = ballotList.get(i);
 
             theVoterBallot = theVoterBallot + oneBallot.getBallot();

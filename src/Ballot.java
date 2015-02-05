@@ -23,8 +23,8 @@ public class Ballot {
      * Constructs a voter ballot object with no information
      */
 
-    public Ballot() {
-
+    public Ballot()
+    {
         this.ballot = new ArrayList<String>();
 
     }
@@ -35,7 +35,8 @@ public class Ballot {
      * @return the candidates on the ballot
      */
 
-    public ArrayList<String> getBallot() {
+    public ArrayList<String> getBallot()
+    {
         return ballot;
     }
 
@@ -45,8 +46,8 @@ public class Ballot {
      * @param ballot the list of candidates the voter chose
      */
 
-    public void setBallot(ArrayList<String> ballot) {
-
+    public void setBallot(ArrayList<String> ballot)
+    {
         this.ballot = ballot;
     }
 
@@ -56,13 +57,13 @@ public class Ballot {
      * @param name the name of the candidate
      */
 
-    public void addToBallot(String name) {
-
+    public void addToBallot(String name)
+    {
         getBallot().add(name);
     }
 
-    public int getBallotSize() {
-
+    public int getBallotSize()
+    {
         return ballot.size();
     }
 
@@ -72,12 +73,12 @@ public class Ballot {
      * @return a candidate's name
      */
 
-    public String getBallotElement() {
-
+    public String getBallotElement()
+    {
         String singleElement = null;
 
-        for (int i = 0; i < ballot.size(); i++) {
-
+        for (int i = 0; i < ballot.size(); i++)
+        {
             singleElement = ballot.get(i);
         }
 
@@ -95,17 +96,18 @@ public class Ballot {
      */
 
 
-    public String firstChoiceFrom(ArrayList<String> candidateList) {
-
-//        for (String candidate : candidateList) { // looks through the candidate list
-            return candidateList.get(0);                    // return the first candidate
-//        }
-
-//            return ""; // if the candidate is not on the list, return nothing
+    public String firstChoiceFrom(ArrayList<String> candidateList)
+    {
+        for (String candidate : ballot)  // looks through the ballot
+        {
+            if (candidateList.contains(candidate)) // if it matches an original candidate
+            {
+                return ballot.get(0); // return the first candidate on the ballot
+            }
         }
-
-
+        return ""; // if the candidate is not on the list, return nothing
     }
+}
 
 
 
