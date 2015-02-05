@@ -131,6 +131,10 @@ public class VoterBallots {
         return fewest;
     }
 
+    /**
+     * Returns the entire VoterBallot object as a string
+     * @return the voter ballot in string format
+     */
     public String toString()
     {
 
