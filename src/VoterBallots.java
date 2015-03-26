@@ -1,5 +1,13 @@
 import java.util.ArrayList;
 
+/**
+ * A class that represents a set of voter ballots.
+ * It is an array list of Ballots (ballots are an array list of candidates a voter chose)
+ * <p/>
+ * I affirm that this program is entirely my own work and none of it is the work of any other person.
+ * Created by Alina Lebron on 1/27/15.
+ */
+
 public class VoterBallots {
     // instance variables
 
@@ -7,25 +15,56 @@ public class VoterBallots {
 
     /**
      * Constructs the VoterBallots object list with no ballots
+     */
+
+    public VoterBallots()
+    {
+        ballotList = new ArrayList<Ballot>();
+    }
+
+
+    /**
+     * Gets the information from the ballotList
+     *
+     * @return ballotList - the set of voter ballots
+     */
+
+    public ArrayList<Ballot> getBallotList()
+    {
+        return ballotList;
+    }
+
+    /**
+     * Sets the ballotList
+     *
      * @param ballotList the set of voter ballots
      */
 
-    public VoterBallots(ArrayList<Ballot> ballotList) {
+    public void setBallotList(ArrayList<Ballot> ballotList)
+    {
         this.ballotList = ballotList;
     }
 
     /**
-     * Gets the information from the ballotList
-     * @return ballotList the set of voter ballots
+     * Adds one voter ballot to the entire set of ballots
+     *
+     * @param one a single ballot
      */
 
-    public ArrayList<Ballot> getBallotList() {
-        return ballotList;
+    public void addToBallotList(Ballot one)
+    {
+        ballotList.add(one);
     }
 
-    public void addBallot(Ballot one) {
+    /**
+     * Retrieves the size of the entire VoterBallots object
+     *
+     * @return the size of the VoterBallots array list object
+     */
 
-        ballotList.add(one);
+    public int getBallotListSize()
+    {
+        return ballotList.size();
     }
 
     /**
@@ -39,10 +78,25 @@ public class VoterBallots {
      * @return the number of times that candidate is first among those in
      * candidateList for all elements of ballotList
      */
-    private int numFirstVotes(String candidate, ArrayList<String> candidateList) {
-        // implementation not shown
-        return -999;   // bogus return value so that class will compile
+
+    private int numFirstVotes(String candidate, ArrayList<String> candidateList)
+    {
+        int candidateCounter = 0; // initializes counter for candidates that were voted for first
+
+        for (Ballot b : ballotList)
+        {
+
+            if (candidate.equals(b.firstChoiceFrom(candidateList)))
+            {
+                candidateCounter++;
+            }
+        }
+
+//        System.out.println(candidate + "'s votes: " + candidateCounter); // output for debugging
+
+        return candidateCounter;
     }
+
 
     /**
      * Returns a list of one or more candidates tied with the fewest first
@@ -54,8 +108,47 @@ public class VoterBallots {
      * @param candidateList a list of candidate names
      * @return a list of those candidates tied with the fewest first choice votes
      */
-    public ArrayList<String> candidatesWithFewest(ArrayList<String> candidateList) {
-        // implementation not shown
-        return null;   // bogus return value so that class will compile
+
+    public ArrayList<String> candidatesWithFewest(ArrayList<String> candidateList)
+    {
+
+        ArrayList<String> fewest = new ArrayList<String>(); // declaring empty list
+
+        int min = Integer.MAX_VALUE; // sets a number to the highest possible value
+
+        for (String s : candidateList)
+        {
+            min = Math.min(min, numFirstVotes(s, candidateList)); // takes minimum of current & min of first candidates
+        }
+
+        for (String s : candidateList)
+        {
+            if (min == numFirstVotes(s, candidateList)) // compares lowest number of votes to current candidate
+            {
+                fewest.add(s); // add to the list if candidate has lowest number of votes
+            }
+        }
+        return fewest;
+    }
+
+    /**
+     * Returns the entire VoterBallot object as a string
+     * @return the voter ballot in string format
+     */
+    public String toString()
+    {
+
+        String theVoterBallot = "";
+
+        Ballot oneBallot;
+
+        for (int i = 0; i < ballotList.size(); i++)
+        {
+            oneBallot = ballotList.get(i);
+
+            theVoterBallot = theVoterBallot + oneBallot.getBallot();
+        }
+
+        return theVoterBallot;
     }
 }  // end of VoterBallots class definition 

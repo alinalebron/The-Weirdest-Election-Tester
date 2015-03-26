@@ -1,9 +1,17 @@
 import java.util.ArrayList;
 
+/**
+ * A class that represents a single voter ballot.
+ * It is an array list that contains the candidates one voter chose
+ * in the election
+ * <p/>
+ * I affirm that this program is entirely my own work and none of it is the work of any other person.
+ * Created by Alina Lebron on 1/27/15.
+ */
+
 public class Ballot {
     // instance variables
 
-    private int voter; // the number assigned to each voter
 
     private ArrayList<String> ballot; // an ordered list of all the candidates
     // in the election, where the first name
@@ -13,24 +21,12 @@ public class Ballot {
 
     /**
      * Constructs a voter ballot object with no information
-     *
-     * @param voter  the voter number
-     * @param ballot a list of candidates the voter chose
      */
 
-    public Ballot(int voter, ArrayList<String> ballot) {
-        this.voter = voter;
-        this.ballot = ballot;
-    }
+    public Ballot()
+    {
+        this.ballot = new ArrayList<String>();
 
-    /**
-     * Gets the voter number from the ballot
-     *
-     * @return the number of the voter
-     */
-
-    public int getVoter() {
-        return voter;
     }
 
     /**
@@ -39,17 +35,56 @@ public class Ballot {
      * @return the candidates on the ballot
      */
 
-    public ArrayList<String> getBallot() {
+    public ArrayList<String> getBallot()
+    {
         return ballot;
     }
 
-    public void setBallot(ArrayList<String> ballot) {
+    /**
+     * Sets the ballot
+     *
+     * @param ballot the list of candidates the voter chose
+     */
+
+    public void setBallot(ArrayList<String> ballot)
+    {
         this.ballot = ballot;
     }
 
-    public void setVoter(int voter) {
-        this.voter = voter;
+    /**
+     * Adds a candidate to the ballot
+     *
+     * @param name the name of the candidate
+     */
+
+    public void addToBallot(String name)
+    {
+        getBallot().add(name);
     }
+
+    public int getBallotSize()
+    {
+        return ballot.size();
+    }
+
+    /**
+     * Gets a single element (a candidate a voter chose) from the ballot array list
+     *
+     * @return a candidate's name
+     */
+
+    public String getBallotElement()
+    {
+        String singleElement = null;
+
+        for (int i = 0; i < ballot.size(); i++)
+        {
+            singleElement = ballot.get(i);
+        }
+
+        return singleElement;
+    }
+
 
     /**
      * Examine a Ballot and return the voter's first choice among the names on
@@ -61,19 +96,18 @@ public class Ballot {
      */
 
 
-    public String firstChoiceFrom(ArrayList<String> candidateList) {
-
-        for (String candidate : this.ballot) {
-
-            if (candidateList.contains(candidate)) {
-                return candidate;
+    public String firstChoiceFrom(ArrayList<String> candidateList)
+    {
+        for (String candidate : ballot)  // looks through the ballot
+        {
+            if (candidateList.contains(candidate)) // if it matches an original candidate
+            {
+                return ballot.get(0); // return the first candidate on the ballot
             }
-
         }
-
-        return "";
+        return ""; // if the candidate is not on the list, return nothing
     }
-
-
 }
+
+
 

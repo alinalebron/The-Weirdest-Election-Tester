@@ -1,2 +1,6 @@
 
 Assignment1.iml
+
+*.xml
+
+.idea/.name

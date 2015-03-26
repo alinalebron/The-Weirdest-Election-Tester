@@ -1,0 +1,3 @@
+The candidates are: Moe Larry Curly Shemp
+
+Moe has won the election!
